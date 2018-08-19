@@ -163,8 +163,8 @@ public class EventBus {
         }
 
         int size = subscriptions.size();
-        for (int i = 0; i <= size; i++) {
-            if (i == size || subscriberMethod.priority > subscriptions.get(i).subscriberMethod.priority) {
+        for (int i = size; i >= 0; i--) {
+            if (i == 0 || subscriberMethod.priority >= subscriptions.get(i - 1).subscriberMethod.priority) {
                 subscriptions.add(i, newSubscription);
                 break;
             }
